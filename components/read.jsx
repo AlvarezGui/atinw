@@ -141,7 +141,7 @@ export default function Read(){
             {lista.map((lista)=>{
                 return(
                     <>                        
-                        <table>
+                        <table className='table table-bordered'>
                             <tr>
                                 <th>Nome:</th>
                                 <th>Validade:</th>
@@ -153,8 +153,8 @@ export default function Read(){
                                 <td>{lista.validade}</td>
                                 <td>
                                     <div className="input-group">
-                                        <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" />
-                                        <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" />
+                                        <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" /> 
+                                        <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-success form-control" />
                                         <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" />
                                     </div>
                                 </td>
