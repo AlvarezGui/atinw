@@ -21,34 +21,6 @@ export default function Read(){
                 }));
                     
             });
-       
-
-        if(ordem === '1'){
-            getDocs(query(produtos, orderBy("nome")))
-                .then((data)=>{
-                    setLista(data.docs.map((item)=>{
-                    return{...item.data(), id:item.id};
-                }));
-                    
-            });
-
-            console.log("AAA" + ordem);
-        }
-
-        else if(ordem === '2'){
-            getDocs(query(produtos, orderBy("validade")))
-                .then((data)=>{
-                    setLista(data.docs.map((item)=>{
-                    return{...item.data(), id:item.id};
-                }));
-                        
-            });
-        }
-
-        else{
-            
-        }
-
     
     }
 
@@ -68,7 +40,7 @@ export default function Read(){
                     
             });
 
-            console.log("AAA" + ordem);
+            //console.log("AAA" + ordem);
         }
 
         else if(ordem === '2'){
@@ -117,7 +89,6 @@ export default function Read(){
 
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{ show(); }, [ID]);
 
     const bt_cancelar = () => {
@@ -156,7 +127,7 @@ export default function Read(){
 
                     {/* Botão */}
                     <input type="submit" value="Salvar" className="btn btn-outline-dark form-control" onClick={()=> bt_alterar(produtosUnico.id)} />
-                    <input type="submit" value="Cancelar" className="btn btn-outline-danger form-control" onClick={bt_cancelar} />
+                    <input type="submit" value="Cancelar" className="btn btn-outline-danger form-control" onClick={bt_cancelar} /> <br /> <br />
                 </div>
             ):(<></>)}
 
@@ -170,9 +141,9 @@ export default function Read(){
                         <div className='container'>                    
                             <table className='table table-bordered'> 
                                 <tr> 
-                                    <th>Nome:</th>
-                                    <th>Validade:</th>
-                                    <th>Ações:</th>
+                                    <th scope="col">Nome:</th>
+                                    <th scope="col">Validade:</th>
+                                    <th scope="col">Ações:</th>
                                 </tr>
 
                                 <tr> 
@@ -180,9 +151,9 @@ export default function Read(){
                                     <td>{lista.validade}</td>
                                     <td>
                                         <div className="input-group">
-                                            <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" /> 
+                                            <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" />
                                             <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-success form-control" />
-                                            <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" />
+                                            <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" /> 
                                         </div>
                                     </td>
                                 </tr>
