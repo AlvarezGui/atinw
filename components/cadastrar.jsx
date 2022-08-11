@@ -24,14 +24,17 @@ export default function Cadastrar(){
 
     return(
         <>
-            <h3>Cadastrar Produto</h3>
-            {/* Nome */}
-            <input type="text" placeholder="Nome" className="form-control" required onChange={event=>setNome(event.target.value)} value={nome} /> <br/> <br />
-            {/* Validade */}
-            <input type="date" placeholder="Vailidade" className="form-control" required onChange={event=>setValidade(event.target.value)} value={validade} /> <br /> <br />
+            <div className="container">
+                <h3>Cadastrar Produto</h3>
+                {/* Nome */}
+                <input type="text" placeholder="Nome" className="form-control" required onChange={event=>setNome(event.target.value)} value={nome} /> <br/> <br />
+                {/* Validade */}
+                <input type="date" placeholder="Vailidade" className="form-control" required onChange={event=>setValidade(event.target.value)} value={validade} /> <br /> <br />
 
-             {/* Botão */}
-             <input type="submit" value="Salvar" className="btn btn-outline-dark form-control" onClick={create} />
+                {/* Botão */}
+                <input type="submit" value="Salvar" className="btn btn-outline-dark form-control" onClick={create} />
+            </div>
         </>
+
     );
 }

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Cadastrar from '../components/cadastrar'
+import Navbar from '../components/navbar';
 import Read from '../components/read';
 
 export default function Home() {
@@ -9,9 +10,9 @@ export default function Home() {
         <title>Validade</title>
       </Head>
 
-      
-      <h1>teste</h1>
-      <Cadastrar></Cadastrar>
+      <Navbar></Navbar>
+
+      <Cadastrar></Cadastrar> <br /> <br />
       <Read></Read>
     </>
   );

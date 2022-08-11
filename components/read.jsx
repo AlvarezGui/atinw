@@ -13,6 +13,14 @@ export default function Read(){
     const [lista, setLista] = useState([]);
     const read = () => {
 
+
+        getDocs(query(produtos, orderBy("validade")))
+                .then((data)=>{
+                    setLista(data.docs.map((item)=>{
+                    return{...item.data(), id:item.id};
+                }));
+                    
+            });
        
 
         if(ordem === '1'){
@@ -38,13 +46,7 @@ export default function Read(){
         }
 
         else{
-            getDocs(query(produtos, orderBy("validade")))
-                .then((data)=>{
-                    setLista(data.docs.map((item)=>{
-                    return{...item.data(), id:item.id};
-                }));
-                    
-            });
+            
         }
 
     
@@ -56,6 +58,28 @@ export default function Read(){
         console.log(ordem);
         //window.location.reload();
        // return(read.ordem);
+
+        if(ordem === '1'){
+            getDocs(query(produtos, orderBy("nome")))
+                .then((data)=>{
+                    setLista(data.docs.map((item)=>{
+                    return{...item.data(), id:item.id};
+                }));
+                    
+            });
+
+            console.log("AAA" + ordem);
+        }
+
+        else if(ordem === '2'){
+            getDocs(query(produtos, orderBy("validade")))
+                .then((data)=>{
+                    setLista(data.docs.map((item)=>{
+                    return{...item.data(), id:item.id};
+                }));
+                    
+            });
+        }
         
     }
 
@@ -121,7 +145,7 @@ export default function Read(){
     return(
         <>
             {mostrar ?(
-                <div>
+                <div className='container'>
                     <h3 className="text-center">ALTERAR</h3>
 
                     {/* Nome */}
@@ -136,30 +160,34 @@ export default function Read(){
                 </div>
             ):(<></>)}
 
-            <h3>Produtos Cadastrados:</h3>
-            <input type="button" value="Mudar Exibição" onClick={() => MudarExibir()} />
+            <div className='container'>
+                <h3>Produtos Cadastrados:</h3> <br />
+                <input className='btn btn-primary' type="button" value="Mudar Exibição" onClick={() => MudarExibir()} /> <br /> <br />
+            </div>
             {lista.map((lista)=>{
                 return(
-                    <>                        
-                        <table className='table table-bordered'>
-                            <tr>
-                                <th>Nome:</th>
-                                <th>Validade:</th>
-                                <th>Ações:</th>
-                            </tr>
+                    <>    
+                        <div className='container'>                    
+                            <table className='table table-bordered'> 
+                                <tr> 
+                                    <th>Nome:</th>
+                                    <th>Validade:</th>
+                                    <th>Ações:</th>
+                                </tr>
 
-                            <tr>
-                                <td>{lista.nome}</td>
-                                <td>{lista.validade}</td>
-                                <td>
-                                    <div className="input-group">
-                                        <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" /> 
-                                        <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-success form-control" />
-                                        <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" />
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                <tr> 
+                                    <td>{lista.nome}</td>
+                                    <td>{lista.validade}</td>
+                                    <td>
+                                        <div className="input-group">
+                                            <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" /> 
+                                            <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-success form-control" />
+                                            <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </>
                 );
             })}
