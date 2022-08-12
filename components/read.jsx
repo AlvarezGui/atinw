@@ -162,6 +162,35 @@ export default function Read(){
                     </>
                 );
             })}
+
+            <div className='container'>
+                <table className='table'>
+                    <tr>
+                        <th scope="col">Nome:</th>                                    
+                        <th scope="col">Validade:</th>
+                        <th scope="col">Ações:</th>
+                    </tr>
+
+                    {lista.map((lista) =>{
+                        return(
+                            <>
+                                <tr>
+                                    <td>{lista.nome}</td>
+                                    <td>{lista.validade}</td>
+                                    <td>
+                                        <div className="input-group">
+                                            <input type="button" value="Alterar" onClick={()=>show(lista.id)} className="btn btn-outline-warning form-control" />
+                                            <input type="button" value="Consumido" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-success form-control" />
+                                            <input type="button" value="Estragado" onClick={()=>deleteBtn(lista.id)} className="btn btn-outline-danger form-control" /> 
+                                        </div>
+                                    </td>
+                                </tr>
+                            </>
+                        );
+                    })}
+                </table>
+            </div>
+
         </>
     );
 
