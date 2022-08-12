@@ -135,7 +135,8 @@ export default function Read(){
                 <h3>Produtos Cadastrados:</h3> <br />
                 <input className='btn btn-primary' type="button" value="Mudar Exibição" onClick={() => MudarExibir()} /> <br /> <br />
             </div>
-            {lista.map((lista)=>{
+
+            {/* {lista.map((lista)=>{
                 return(
                     <>    
                         <div className='container'>                    
@@ -161,10 +162,10 @@ export default function Read(){
                         </div>
                     </>
                 );
-            })}
+            })} */}
 
             <div className='container'>
-                <table className='table'>
+                <table className='table table-bordered'>
                     <tr>
                         <th scope="col">Nome:</th>                                    
                         <th scope="col">Validade:</th>
